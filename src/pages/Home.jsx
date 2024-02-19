@@ -5,6 +5,7 @@ import Island from "../modals/Island.jsx";
 import Sky from "../modals/Sky.jsx";
 import Bird from "../modals/Bird.jsx";
 import Plane from "../modals/Plane.jsx";
+import HomeInfo from "../components/HomeInfo.jsx";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -44,9 +45,9 @@ const Home = () => {
 
   return (
     <section className={'w-full h-screen relative'}>
-      {/*<div className={'absolute top-28 left-0 right-0 z-10 flex items-center justify-center'}>*/}
-      {/*  POPUP*/}
-      {/*</div>*/}
+      <div className={'absolute top-28 left-0 right-0 z-10 flex items-center justify-center'}>
+        {currentStage && <HomeInfo currentStage={currentStage} />}
+      </div>
 
       <Canvas
         className={`w-100 h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
