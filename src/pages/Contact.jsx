@@ -16,7 +16,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
   const [currentAnimation, setCurrentAnimation] = useState('idle')
-  const [alert, showAlert, hideAlert] = useAlert()
+  const {alert, showAlert, hideAlert} = useAlert()
   const handleChanges = (e) => {
     setForm({...form, [e.target.name]: e.target.value});
   }
@@ -41,25 +41,23 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
     ).then(response => {
       setLoading(false);
-      showAlert({show: true, message: "Message sent successfully", type: 'successsuccess'});
+      showAlert({show: true, text: "Message sent successfully", type: 'success'});
       setTimeout(() => {
-          hideAlert()
+          hideAlert();
           setForm({...initialForm});
           setCurrentAnimation('idle');
       }, 3000);
 
     }).catch((e)=>{
       setLoading(false);
-      showAlert({show: true, message: "I didn't receive your message", });
+      showAlert({show: true, text: "I didn't receive your message", });
       setCurrentAnimation('idle')
 
     })
   }
   return (
       <section className={'relative flex lg:flex-row flex-col max-container'}>
-        {
-            // alert.show &&
-            <Alert {...alert} /> }
+        { alert.show && <Alert {...alert} /> }
         <div className={'flex-1 min-w-[50%] flex flex-col'}>
           <h1 className={'head-text'}>
             Get in Touch
@@ -128,7 +126,7 @@ const Contact = () => {
             <directionalLight intensity={2.5} position={[0,0,1]} />
             <ambientLight intensity={0.5} />
             <Suspense fallback={<Loader />}>
-              <Fox position={[0.5, 0.35, 0]}
+              <Fox position={[0.5, 0.85, 0]}
                    rotation={[12.6, -0.6, 0]}
                    scale={[0.5, 0.5, 0.5]}
                    currentAnimation={currentAnimation}
