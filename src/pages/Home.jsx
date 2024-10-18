@@ -28,12 +28,12 @@ const Home = () => {
     // Adjust the island for the screen size
     let screenScale, screenPosition;
 
-    if(window.innerWidth < 768){
+    if (window.innerWidth < 768) {
       screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, -1.5, 0]
-    }else{
+      screenPosition = [0, -1.5, 0];
+    } else {
       screenScale = [3, 3, 3];
-      screenPosition = [0, -4, -4]
+      screenPosition = [0, -4, -4];
     }
 
     return [screenScale, screenPosition]
@@ -69,10 +69,10 @@ const Home = () => {
                   setCurrentStage={setCurrentStage}
           />
           <Plane
-            placeScale={planeScale}
-            planePosotopn={planePosition}
+            scale={planeScale}
+            position={planePosition}
             isRotating={isRotating}
-            rotation={[0, 20, 0]}
+            rotation={[0, 20.1, 0]}
           />
 
 
